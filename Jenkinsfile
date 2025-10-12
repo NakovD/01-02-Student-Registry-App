@@ -8,7 +8,10 @@ pipeline {
         }
         stage('Run tests') {
             steps {
-                bat 'npm test'
+                script {
+                    input message: Do you want to run tests?, ok: 'Yes, run tests'
+                    bat 'npm test'
+                }
             }
         }
     }
